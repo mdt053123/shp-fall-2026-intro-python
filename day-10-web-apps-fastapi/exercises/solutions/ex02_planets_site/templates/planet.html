@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}{{ planet.name }}{% endblock %}
+{% block content %}
+    <h1>{{ planet.name }}</h1>
+    <p><span class="tag">{{ planet.type }}</span> <span class="tag">planet #{{ planet.order }} from the Sun</span></p>
+    <p class="result">{{ planet.fact }}</p>
+    <table>
+        <tr><th>Diameter</th><td>{{ "{:,}".format(planet.diameter_km) }} km ({{ times_earth }} × Earth)</td></tr>
+        <tr><th>Distance from the Sun</th><td>{{ planet.distance_million_km }} million km</td></tr>
+        <tr><th>Length of a day</th><td>{{ planet.day_hours }} hours</td></tr>
+        <tr><th>Length of a year</th><td>{{ planet.year_days }} Earth days</td></tr>
+    </table>
+    <p><a href="/">← All planets</a></p>
+{% endblock %}

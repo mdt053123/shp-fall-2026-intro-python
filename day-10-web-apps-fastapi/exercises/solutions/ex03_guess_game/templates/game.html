@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guess the Number</title>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 520px; margin: 40px auto; text-align: center; background: #f5f7fb; }
+        .message { font-size: 1.4em; margin: 24px 0; }
+        input { font-size: 1.2em; width: 100px; padding: 6px; }
+        button { font-size: 1.1em; padding: 6px 16px; background: #3b5bdb; color: white; border: none; border-radius: 6px; }
+        .guess { display: inline-block; margin: 3px; padding: 3px 10px; border-radius: 999px; background: #e7ecff; }
+    </style>
+</head>
+<body>
+    <h1>🎯 Guess the Number</h1>
+    <p class="message">{{ game.message }}</p>
+
+    {% if not game.won %}
+    <form action="/guess" method="post">
+        <input type="number" name="guess" min="1" max="100" required autofocus>
+        <button type="submit">Guess</button>
+    </form>
+    {% endif %}
+
+    <p>Guesses so far ({{ game.guesses | length }}):
+        {% for g in game.guesses %}<span class="guess">{{ g }}</span>{% endfor %}
+    </p>
+    {% if game.best %}<p>🏆 Best score: {{ game.best }} guesses</p>{% endif %}
+
+    <form action="/new" method="post"><button type="submit">New game</button></form>
+</body>
+</html>

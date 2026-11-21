@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+    <h1>{{ title }}</h1>
+    {% if planets %}
+    <table>
+        <tr><th>#</th><th>Planet</th><th>Type</th><th>Diameter (km)</th><th>Distance from Sun (million km)</th></tr>
+        {% for p in planets %}
+        <tr>
+            <td>{{ p.order }}</td>
+            <td><a href="/planet/{{ p.name | lower }}">{{ p.name }}</a></td>
+            <td>{{ p.type }}</td>
+            <td>{{ "{:,}".format(p.diameter_km) }}</td>
+            <td>{{ p.distance_million_km }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>No planets matched.</p>
+    {% endif %}
+{% endblock %}

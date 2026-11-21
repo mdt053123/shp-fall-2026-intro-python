@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Solar System{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/">🪐 Planets</a>
+        <a href="/?sort=diameter_km">Biggest first</a>
+        <a href="/api/planets">JSON</a>
+        <form action="/search" method="get" style="display:inline; background:none; padding:0; margin:0;">
+            <input type="text" name="q" placeholder="Search...">
+        </form>
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

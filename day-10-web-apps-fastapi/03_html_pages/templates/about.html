@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% block content %}
+    <h1>About Me</h1>
+    <p>I'm a high school student learning to code at Columbia's Science Honors Program.</p>
+
+    <h2>Skills</h2>
+    <div>
+    {% for skill in skills %}
+        <span class="tag">{{ skill }}</span>
+    {% endfor %}
+    </div>
+
+    <h2>Hobbies</h2>
+    <ul>
+    {% for hobby in hobbies %}
+        <li>{{ loop.index }}. {{ hobby }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Penguin Classifier</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav><a href="/">🐧 Penguin Classifier</a><a href="/docs">API docs</a></nav>
+    <main>
+        <h1>Which penguin is it?</h1>
+        <p>Enter a penguin's measurements, and a k-nearest-neighbors model trained on 333 real
+           Antarctic penguins will guess its species.</p>
+        <form action="/predict" method="post">
+            <label>Bill length (mm): <input type="number" step="any" name="bill_length" value="{{ defaults.bill_length_mm }}" required></label><br>
+            <label>Bill depth (mm): <input type="number" step="any" name="bill_depth" value="{{ defaults.bill_depth_mm }}" required></label><br>
+            <label>Flipper length (mm): <input type="number" step="any" name="flipper_length" value="{{ defaults.flipper_length_mm }}" required></label><br>
+            <label>Body mass (g): <input type="number" step="any" name="body_mass" value="{{ defaults.body_mass_g }}" required></label><br>
+            <button type="submit">Predict</button>
+        </form>
+        <p>Try: 39, 18.5, 190, 3700 (small and deep-billed) · 49, 15, 220, 5400 (big) · 49, 18.5, 196, 3700 (long bill, light)</p>
+    </main>
+</body>
+</html>

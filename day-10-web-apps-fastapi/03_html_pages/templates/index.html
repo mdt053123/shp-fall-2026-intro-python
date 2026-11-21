@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <h1>Hi, I'm {{ name }} 👋</h1>
+    <p>Today is {{ today }}. Here are the projects I built in SHP Intro to Python:</p>
+
+    <div class="grid">
+    {% for p in projects %}
+        <a class="card" href="/projects/{{ p.slug }}">
+            <h3>{{ p.name }}</h3>
+            <p>{{ p.description }}</p>
+            <span class="tag">Day {{ p.day }}</span>
+        </a>
+    {% endfor %}
+    </div>
+
+    <p>That's {{ projects | length }} projects!</p>
+{% endblock %}

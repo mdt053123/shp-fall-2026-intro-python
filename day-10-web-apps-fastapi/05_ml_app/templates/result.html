@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction: {{ species }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav><a href="/">🐧 Penguin Classifier</a><a href="/docs">API docs</a></nav>
+    <main>
+        <h1>{{ emoji }} It's probably a {{ species }} penguin!</h1>
+
+        <h2>How sure is the model?</h2>
+        <table>
+            <tr><th>Species</th><th>Share of the 5 nearest neighbors</th></tr>
+            {% for name, p in probs.items() %}
+            <tr><td>{{ name }}</td><td>{{ (p * 100) | round | int }}%</td></tr>
+            {% endfor %}
+        </table>
+
+        <h2>You entered</h2>
+        <ul>
+            {% for key, value in inputs.items() %}
+            <li>{{ key }}: {{ value }}</li>
+            {% endfor %}
+        </ul>
+        <p><a href="/">← Try another penguin</a></p>
+    </main>
+</body>
+</html>

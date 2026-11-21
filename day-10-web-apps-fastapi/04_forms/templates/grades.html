@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Grade Calculator{% endblock %}
+{% block content %}
+    <h1>📝 Grade Calculator</h1>
+    <form action="/grades" method="post">
+        <label>Student name: <input type="text" name="name" required></label><br>
+        <label>Scores: <input type="text" name="scores" placeholder="90, 85, 77" required></label><br>
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if average is defined %}
+        <p class="result">{{ name }}: average {{ average }} → {{ letter }}</p>
+        <p>Scores: {% for s in scores %}<span class="tag">{{ s }}</span>{% endfor %}</p>
+    {% endif %}
+{% endblock %}
